@@ -27,21 +27,20 @@ import './App.css';
 import { useStateContext } from './contexts/ContextProvider';
 
 const App = () => {
-//   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-    const { activeMenu } = useStateContext();
+  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
-//   useEffect(() => {
-//     const currentThemeColor = localStorage.getItem('colorMode');
-//     const currentThemeMode = localStorage.getItem('themeMode');
-//     if (currentThemeColor && currentThemeMode) {
-//       setCurrentColor(currentThemeColor);
-//       setCurrentMode(currentThemeMode);
-//     }
-//   }, []);
+  useEffect(() => {
+    const currentThemeColor = localStorage.getItem('colorMode');
+    const currentThemeMode = localStorage.getItem('themeMode');
+    if (currentThemeColor && currentThemeMode) {
+      setCurrentColor(currentThemeColor);
+      setCurrentMode(currentThemeMode);
+    }
+  }, []);
 
   return (
-    // <div className={currentMode === 'Dark' ? 'dark' : ''}>
-    <div>
+    <div className={currentMode === 'Dark' ? 'dark' : ''}>
+    {/* // <div> */}
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
@@ -51,9 +50,8 @@ const App = () => {
             >
               <button
                 type="button"
-                // onClick={() => setThemeSettings(true)}
-                style={{ background: 'blue', borderRadius: '50%' }}
-                // style={{ background: currentColor, borderRadius: '50%' }}
+                onClick={() => setThemeSettings(true)}
+                style={{ background: currentColor, borderRadius: '50%' }}
                 className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
               >
                 <FiSettings />
@@ -83,7 +81,7 @@ const App = () => {
             </div>
             
             <div>
-              {/* {themeSettings && (<ThemeSettings />)} */}
+              {themeSettings && (<ThemeSettings />)}
 
               <Routes>
                 {/* dashboard  */}
@@ -102,18 +100,18 @@ const App = () => {
                 <Route path="/color-picker" element={<ColorPicker />} />
 
                 {/* charts  */}
-                <Route path="/line" element={<Line />} />
+                {/* <Route path="/line" element={<Line />} />
                 <Route path="/area" element={<Area />} />
                 <Route path="/bar" element={<Bar />} />
                 <Route path="/pie" element={<Pie />} />
                 <Route path="/financial" element={<Financial />} />
                 <Route path="/color-mapping" element={<ColorMapping />} />
                 <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked />} />
+                <Route path="/stacked" element={<Stacked />} /> */}
 
               </Routes>
             </div>
-            {/* <Footer /> */}
+            <Footer />
           </div>
         </div>
       </BrowserRouter>
