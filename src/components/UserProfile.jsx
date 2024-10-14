@@ -16,7 +16,6 @@ const UserProfile = () => {
         <Button
           icon={<MdOutlineCancel />}
           color="rgb(153, 171, 180)"
-          bgHoverColor="light-gray"
           size="2xl"
           borderRadius="50%"
         />
